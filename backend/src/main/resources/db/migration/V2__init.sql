@@ -176,7 +176,7 @@ CREATE TABLE liquor (
     country VARCHAR(100),
     alcohol DECIMAL(5,2),
     aged INT,
-    price INT,
+    price VARCHAR(255),
     ibu INT,
     FOREIGN KEY (producer_id) REFERENCES producer(id),
     FOREIGN KEY (brand_id) REFERENCES brand(id),
