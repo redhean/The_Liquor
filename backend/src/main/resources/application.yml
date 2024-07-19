@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: theliquor
+  datasource:
+    url: jdbc:mysql://the_liquor_db:3306/${MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8mb4
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${MYSQL_ROOT_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+---
+
+# Test 용
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;MODE=MYSQL
+    username: user
+    password: 1234
+  config:
+    activate:
+      on-profile: test
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  flyway:
+    enabled: false
+
+---
+
+# Swagger 설정
+springdoc:
+  swagger-ui:
+    path: /api-test  # swagger-ui 접근 경로에 대한 별칭, 해당 주소로 접속해도 http://localhost:8080/swagger-ui/index.html로 리다이렉션 됨.
+    groups-order: DESC # path, query, body, response 순으로 출력
+    tags-sorter: alpha # 태그를 알파벳 순으로 정렬
+    operations-sorter: method  # delete - get - patch - post - put 순으로 정렬, alpha를 사용하면 알파벳 순으로 정렬 가능
+#  paths-to-match:
+#    - /api/** # swagger-ui에 표시할 api의 엔드포인트 패턴
+
+---
+
+logging:
+  level:
+    org.hibernate: INFO
+    org.springframework: INFO
