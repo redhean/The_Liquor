@@ -24,4 +24,5 @@ public class TestDTO {
         this.id = id;
         this.name = name;
     }
+
 }
