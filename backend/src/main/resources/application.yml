@@ -2,7 +2,7 @@ spring:
   application:
     name: theliquor
   datasource:
-    url: jdbc:mysql://the_liquor_db:3306/${MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true
+    url: ${DOCKER_DB_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${MYSQL_ROOT_PASSWORD}
   jpa:
