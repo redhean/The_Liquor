@@ -41,3 +41,6 @@ out/
 
 ### MySQL ###
 mysql/
+
+### Image ###
+src/main/resources/static/image/
