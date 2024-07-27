@@ -8,6 +8,7 @@ spring:
   jpa:
     properties:
       hibernate:
+        ddl-auto: validate
         dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
   flyway:
@@ -29,6 +30,7 @@ spring:
   jpa:
     properties:
       hibernate:
+        ddl-auto: validate
         dialect: org.hibernate.dialect.H2Dialect
     show-sql: true
   flyway:

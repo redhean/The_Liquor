@@ -10,3 +10,4 @@ $ docker compose up -d --build
 ```
 $ docker exec -it the_liquor_db bash 
 ```
+
