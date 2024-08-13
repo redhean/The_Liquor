@@ -194,7 +194,7 @@ CREATE TABLE images (
 -- Users 테이블 생성
 -- user는 SQL 예약어라서 대괄호로 묶어주거나 users로 변경
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     is_superuser BOOLEAN DEFAULT FALSE,
