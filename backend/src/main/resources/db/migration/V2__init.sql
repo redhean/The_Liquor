@@ -174,7 +174,7 @@ CREATE TABLE liquor (
     korean_name VARCHAR(255),
     english_name VARCHAR(255),
     country VARCHAR(100),
-    alcohol DECIMAL(5,2),
+    alcohol FLOAT,
     aged INT,
     price VARCHAR(255),
     ibu INT,
