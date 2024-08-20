@@ -1,10 +1,12 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
-import Topbar from "./components/topbar";
+import Topbar from "./components/Topbar";
 
 function App() {
   return (
     <>
       <Topbar />
+      <Outlet />
     </>
   );
 }

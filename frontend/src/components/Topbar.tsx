@@ -3,9 +3,12 @@ import "./TopBar.css";
 
 export default function Topbar() {
   return (
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/admin">Admin</Link>
+    <div className="flex gap-8 bg-slate-300 h-auto w-screen justify-between p-4">
+      <div>Logo</div>
+      <div className="flex gap-4">
+        <Link to="/">Home</Link>
+        <Link to="/admin">Admin</Link>
+      </div>
     </div>
   );
 }
