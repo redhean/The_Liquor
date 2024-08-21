@@ -1,3 +1,4 @@
+import AddItemButton from "@/components/AddItemButton";
 import { NavLink, Outlet } from "react-router-dom";
 
 export default function AdminMain() {
@@ -5,16 +6,15 @@ export default function AdminMain() {
 
   return (
     <div>
-      <nav>
+      <AddItemButton />
+      <nav className="flex flex-row gap-4 text-lg bg-slate-400 justify-center py-2">
         <NavLink
-          to={configUrl+'liquor'}
+          to={configUrl + "liquor"}
           className={({ isActive, isPending }) => {
-            console.log(isActive, isPending);
-
             return isPending
               ? "bg-slate-600"
               : isActive
-                ? "font-semibold underline"
+                ? "font-semibold underline underline-offset-2"
                 : "";
           }}
         >
@@ -23,13 +23,11 @@ export default function AdminMain() {
         <NavLink
           to={configUrl + "producer"}
           className={({ isActive, isPending }) => {
-            console.log(isActive, isPending);
-
             return isPending
               ? "bg-slate-600"
               : isActive
-                ? "font-semibold underline"
-                : "bg-red-50";
+                ? "font-semibold underline underline-offset-2"
+                : "";
           }}
         >
           생산자
@@ -37,13 +35,11 @@ export default function AdminMain() {
         <NavLink
           to={configUrl + "brand"}
           className={({ isActive, isPending }) => {
-            console.log(isActive, isPending);
-
             return isPending
               ? "bg-slate-600"
               : isActive
-                ? "font-semibold underline"
-                : "bg-red-50";
+                ? "font-semibold underline underline-offset-2"
+                : "";
           }}
         >
           브랜드
@@ -51,13 +47,11 @@ export default function AdminMain() {
         <NavLink
           to={configUrl + "cardnews"}
           className={({ isActive, isPending }) => {
-            console.log(isActive, isPending);
-
             return isPending
               ? "bg-slate-600"
               : isActive
-                ? "font-semibold underline"
-                : "bg-red-50";
+                ? "font-semibold underline underline-offset-2"
+                : "";
           }}
         >
           카드뉴스

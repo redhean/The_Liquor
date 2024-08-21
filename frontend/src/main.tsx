@@ -6,6 +6,11 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AdminMain from "./pages/admin/AdminMain.tsx";
 import AdminOutlet from "./pages/admin/AdminOutlet.tsx";
+import AdminSearch from "./pages/admin/AdminSearch.tsx";
+import CreateLiquor from "./pages/admin/CreateLiquor.tsx";
+import CreateBrand from "./pages/admin/CreateBrand.tsx";
+import CreateProducer from "./pages/admin/CreateProducer.tsx";
+import CreateCardnews from "./pages/admin/CreateCardnews.tsx";
 
 const router = createBrowserRouter([
   {
@@ -16,29 +21,46 @@ const router = createBrowserRouter([
         path: "/admin",
         element: <AdminOutlet />,
         children: [
-          { path: "login", element: <AdminLogin /> },
+          { path: "login", element: <AdminLogin />, index: true },
           {
             path: "config",
             element: <AdminMain />,
             children: [
               {
+                path: "liquor",
                 index: true,
-                element: <div>술</div>,
+                element: <AdminSearch searchType="liquor"/>,
               },
               {
                 path: "brand",
-                element: <div>브랜드</div>,
+                element: <AdminSearch searchType="brand"/>,
               },
               {
                 path: "producer",
-                element: <div>생산자</div>,
+                element: <AdminSearch searchType="producer"/>,
               },
               {
                 path: "cardnews",
-                element: <div>카드뉴스</div>,
+                element: <AdminSearch searchType="cardnews"/>,
               },
             ],
           },
+          {
+            path: "createliquor",
+            element: <CreateLiquor />,
+          },
+          {
+            path: "createbrand",
+            element: <CreateBrand />,
+          },
+          {
+            path: "createproducer",
+            element: <CreateProducer />,
+          },
+          {
+            path: "createcardnews",
+            element: <CreateCardnews />,
+          }
         ],
       },
     ],

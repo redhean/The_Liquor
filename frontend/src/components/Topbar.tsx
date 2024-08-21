@@ -3,7 +3,7 @@ import "./TopBar.css";
 
 export default function Topbar() {
   return (
-    <div className="flex gap-8 bg-slate-300 h-auto w-screen justify-between p-4">
+    <div className="flex gap-8 bg-slate-300 h-auto justify-between p-4">
       <div>Logo</div>
       <div className="flex gap-4">
         <Link to="/">Home</Link>
