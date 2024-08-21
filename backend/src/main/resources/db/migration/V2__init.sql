@@ -187,7 +187,7 @@ CREATE TABLE liquor (
 CREATE TABLE images (
     id INT AUTO_INCREMENT PRIMARY KEY,
     entity_id BIGINT NOT NULL,
-    entity_type VARCHAR(50) NOT NULL,
+    entity_type int NOT NULL,
     image_path VARCHAR(255) NOT NULL
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

@@ -6,6 +6,7 @@ ADD COLUMN adv INT DEFAULT 0;
 
 -- update brand
 ALTER TABLE brand
+ADD COLUMN color VARCHAR(255),
 ADD COLUMN classification_id INT,
 ADD FOREIGN KEY (classification_id) REFERENCES classifications(id);
 
