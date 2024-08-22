@@ -18,7 +18,7 @@ public class CardNews {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @OneToOne
     @JoinColumn(name = "classification_id", referencedColumnName = "id")
