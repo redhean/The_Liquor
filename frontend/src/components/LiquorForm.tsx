@@ -82,7 +82,10 @@ export default function LiquorForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // 화면 내비게이션
     console.log(values);
+
+    // api 호출
     alert("추가되었습니다.");
+
     // 나중에는 다른 곳으로 내비게이션
     navigate("../config");
   }
@@ -127,7 +130,7 @@ export default function LiquorForm() {
                     )}
                   </FormLabel>
                   <FormControl>
-                    <Input className="hidden" type="file" {...fileRef} />
+                    <Input className="hidden" type="file" {...fileRef} accept="image/*" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input } from "../../components/ui/input";
+import { Input } from "@/components/ui/input";
 import { AiOutlineSearch, AiOutlineEdit } from "react-icons/ai";
 
 export type AdminSearchProps = "liquor" | "producer" | "brand" | "cardnews";
