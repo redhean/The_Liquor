@@ -4,10 +4,10 @@ import Topbar from "./components/Topbar";
 
 function App() {
   return (
-    <>
+    <div className="h-screen">
       <Topbar />
       <Outlet />
-    </>
+    </div>
   );
 }
 

@@ -18,7 +18,7 @@ export default function CreateProducer() {
   }, []);
 
   return (
-    <div>
+    <div className="px-10 py-2">
       <ProducerForms />
     </div>
   );

@@ -37,11 +37,11 @@ const formSchema = z.object({
     .refine((file) => file?.length > 0, "파일을 첨부해주세요.")
     .refine(
       (file) => file[0]?.size <= MAX_FILE_SIZE,
-      "파일 크기는 최대 5MB입니다.",
+      "파일 크기는 최대 5MB입니다."
     )
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file[0]?.type),
-      "지원하지 않는 파일 형식입니다.",
+      "지원하지 않는 파일 형식입니다."
     ),
   producer: z.number(),
   brand: z.number(),
@@ -93,22 +93,26 @@ export default function LiquorForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-between p-8">
           <h1 className="text-3xl font-semibold">
-            술 추가 {form.getValues("korean_name")}
+            술 추가{" "}
+            <span className="text-xl">{form.getValues("korean_name")}</span>
           </h1>
-          <Button
-            className="w-32"
-            variant="destructive"
-            size="sm"
-            type="button"
-          >
-            취소
-          </Button>
-          <Button className="w-32" size="sm" type="submit">
-            추가
-          </Button>
+          <div className="space-x-2">
+            <Button
+              className="w-24"
+              variant="destructive"
+              size="sm"
+              type="button"
+            >
+              취소
+            </Button>
+            <Button className="w-24" size="sm" type="submit">
+              추가
+            </Button>
+          </div>
         </div>
+        {/* 이미지와 나머지 입력 폼 컨테이너 */}
         <div className="grid grid-cols-[1fr,_2fr] gap-4 bg-slate-100">
           {/* 이미지 */}
           <div>
@@ -118,10 +122,10 @@ export default function LiquorForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    {form.getValues("image")?.length > 0 ? (
+                    {field.value?.length > 0 ? (
                       <img
                         className="w-full object-contain bg-slate-400"
-                        src={URL.createObjectURL(form.getValues("image")[0])}
+                        src={URL.createObjectURL(field.value[0])}
                       />
                     ) : (
                       <div className="size-auto min-h-80 bg-slate-400 flex justify-center items-center">
@@ -130,7 +134,12 @@ export default function LiquorForm() {
                     )}
                   </FormLabel>
                   <FormControl>
-                    <Input className="hidden" type="file" {...fileRef} accept="image/*" />
+                    <Input
+                      className="hidden"
+                      type="file"
+                      {...fileRef}
+                      accept="image/*"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

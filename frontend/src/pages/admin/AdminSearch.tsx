@@ -31,7 +31,7 @@ export default function AdminSearch({
   return (
     <div>
       <div className="flex flex-row border-neutral-950 border-b-2 justify-center items-center px-1">
-        <div className="size-6 bg-red-50 flex items-center justify-center self-center">
+        <div className="size-6 flex items-center justify-center self-center">
           <AiOutlineSearch className="fill-black stroke-2 size-5" />
         </div>
         <Input
@@ -43,15 +43,21 @@ export default function AdminSearch({
           placeholder={`검색할 ${searchType}을(를) 입력하세요`}
         />
       </div>
-      <div className="flex flex-col gap-[1px] bg-slate-500">
+      <div className="flex flex-col bg-slate-100 mt-4 py-1 rounded-xl  overflow-clip">
         {searchResult?.itemList.map((result) => (
-          <div
-            key={result.id}
-            className="bg-white p-1 flex flex-row justify-between items-center"
-          >
-            <span className="text-base">{result.title}</span>
-            <AiOutlineEdit className="fill-black stroke-1 size-4 bg-red-100" />
-          </div>
+          <>
+            <div
+              key={result.id}
+              className="p-2 flex flex-row justify-between items-center px-4"
+            >
+              <span className="text-base">{result.title}</span>
+              <AiOutlineEdit className="fill-slate-600 stroke-1 size-4 cursor-pointer hover:fill-black" />
+            </div>
+            {result.id !==
+              searchResult.itemList[searchResult.itemList.length - 1].id && (
+              <hr className="border-t-2 mx-2" />
+            )}
+          </>
         ))}
       </div>
     </div>

@@ -18,7 +18,7 @@ export default function CreateLiquor() {
   }, []);
 
   return (
-    <div className="pb-16 bg-gray-600 px-4">
+    <div className="px-10 py-2">
       <LiquorForm />
     </div>
   );
