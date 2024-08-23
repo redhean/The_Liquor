@@ -18,7 +18,7 @@ export default function CreateBrand() {
   }, []);
 
   return (
-    <div>
+    <div className="px-10 py-2">
       <BrandForm />
     </div>
   );

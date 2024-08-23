@@ -36,11 +36,11 @@ const formSchema = z.object({
     .refine((file) => file?.length > 0, "파일을 첨부해주세요.")
     .refine(
       (file) => file[0]?.size <= MAX_FILE_SIZE,
-      "파일 크기는 최대 5MB입니다.",
+      "파일 크기는 최대 5MB입니다."
     )
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file[0]?.type),
-      "지원하지 않는 파일 형식입니다.",
+      "지원하지 않는 파일 형식입니다."
     ),
   producer: z.string(),
   name: z.string(),
@@ -76,21 +76,24 @@ export default function BrandForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-between p-8">
           <h1 className="text-3xl font-semibold">
-            브랜드 추가 {form.getValues("name")}
+            브랜드 추가{" "}
+            <span className="text-xl">{form.getValues("name")}</span>
           </h1>
-          <Button
-            className="w-32"
-            variant="destructive"
-            size="sm"
-            type="button"
-          >
-            취소
-          </Button>
-          <Button className="w-32" size="sm" type="submit">
-            추가
-          </Button>
+          <div className="space-x-2">
+            <Button
+              className="w-24"
+              variant="destructive"
+              size="sm"
+              type="button"
+            >
+              취소
+            </Button>
+            <Button className="w-24" size="sm" type="submit">
+              추가
+            </Button>
+          </div>
         </div>
         <div className="grid grid-cols-[1fr,_2fr] gap-4 bg-slate-100">
           {/* 이미지 */}
@@ -213,7 +216,7 @@ export default function BrandForm() {
                         {...field}
                       />
                     </FormControl>
-                  <FormMessage />
+                    <FormMessage />
                   </div>
                 </FormItem>
               )}

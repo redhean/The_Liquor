@@ -42,21 +42,24 @@ export default function ProducerForms() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-between p-8">
           <h1 className="text-3xl font-semibold">
-            생산자 추가 {form.getValues("name")}
+            생산자 추가{" "}
+            <span className="text-xl">{form.getValues("name")}</span>
           </h1>
-          <Button
-            className="w-32"
-            variant="destructive"
-            size="sm"
-            type="button"
-          >
-            취소
-          </Button>
-          <Button className="w-32" size="sm" type="submit">
-            추가
-          </Button>
+          <div className="space-x-2">
+            <Button
+              className="w-24"
+              variant="destructive"
+              size="sm"
+              type="button"
+            >
+              취소
+            </Button>
+            <Button className="w-24" size="sm" type="submit">
+              추가
+            </Button>
+          </div>
         </div>
         {/* 국문이름 */}
         <FormField

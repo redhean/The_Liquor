@@ -62,21 +62,24 @@ export default function CardnewsForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-between p-8">
           <h1 className="text-3xl font-semibold">
-            카드뉴스 추가 {form.getValues("title")}
+            카드뉴스 추가{" "}
+            <span className="text-xl">{form.getValues("title")}</span>
           </h1>
-          <Button
-            className="w-32"
-            variant="destructive"
-            size="sm"
-            type="button"
-          >
-            취소
-          </Button>
-          <Button className="w-32" size="sm" type="submit">
-            추가
-          </Button>
+          <div className="space-x-2">
+            <Button
+              className="w-24"
+              variant="destructive"
+              size="sm"
+              type="button"
+            >
+              취소
+            </Button>
+            <Button className="w-24" size="sm" type="submit">
+              추가
+            </Button>
+          </div>
         </div>
         <div className="w-full space-y-2">
           {/* 제목 */}
@@ -142,7 +145,7 @@ export default function CardnewsForm() {
               name="images"
               render={({ field }) => (
                 <FormItem>
-                  <div className="grid grid-cols-3 w-fit gap-4 bg-red-300">
+                  <div className="grid grid-cols-[3])] gap-4 bg-slate-200 w-full">
                     {field.value?.length > 0 &&
                       Array.from(field.value).map((image: any) => {
                         return (
@@ -163,8 +166,8 @@ export default function CardnewsForm() {
                                 form.setValue(
                                   "images",
                                   currentFiles.filter(
-                                    (file: any) => file !== image,
-                                  ),
+                                    (file: any) => file !== image
+                                  )
                                 );
                               }}
                             >
@@ -174,7 +177,7 @@ export default function CardnewsForm() {
                         );
                       })}
                     <FormLabel>
-                      <div className="size-64 bg-red-500 flex justify-center items-center border border-black rounded-xl">
+                      <div className="size-64 bg-white flex justify-center items-center border border-black rounded-xl">
                         <AiOutlineUpload className="size-8" />
                       </div>
                     </FormLabel>
