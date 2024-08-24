@@ -23,13 +23,13 @@ CREATE TABLE classifications (
     parent_id INT,
     name VARCHAR(255) NOT NULL,
     FOREIGN KEY (parent_id) REFERENCES classifications(id) ON DELETE SET NULL
-)CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 -- Producer 테이블 생성
 CREATE TABLE producer (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
-)CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 -- Brand 테이블 생성
 CREATE TABLE brand (
@@ -40,7 +40,7 @@ CREATE TABLE brand (
     classification_id INT,
     FOREIGN KEY (classification_id) REFERENCES classifications(id),
     FOREIGN KEY (producer_id) REFERENCES producer(id)
-)CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 -- Liquor 테이블 생성
 CREATE TABLE liquor (
@@ -58,22 +58,21 @@ CREATE TABLE liquor (
     is_domestic_sale BOOLEAN,
     description TEXT,
     adv INT DEFAULT 0,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (producer_id) REFERENCES producer(id),
     FOREIGN KEY (brand_id) REFERENCES brand(id),
     FOREIGN KEY (classification_id) REFERENCES classifications(id)
-)CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 -- Images 테이블 생성
 CREATE TABLE images (
     id INT AUTO_INCREMENT PRIMARY KEY,
     entity_id BIGINT NOT NULL,
-    entity_type int NOT NULL,
+    entity_type INT NOT NULL,
     image_path VARCHAR(255) NOT NULL
-)CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 -- Users 테이블 생성
--- user는 SQL 예약어라서 대괄호로 묶어주거나 users로 변경
 CREATE TABLE users (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -81,10 +80,9 @@ CREATE TABLE users (
     is_superuser BOOLEAN DEFAULT FALSE,
     is_staff BOOLEAN DEFAULT FALSE,
     is_active BOOLEAN DEFAULT TRUE
-)CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 -- add card_news
--- card_news_images 가 변경되면 update_at 함께 변경
 CREATE TABLE card_news (
     id INT AUTO_INCREMENT PRIMARY KEY,
     classification_id INT,
@@ -92,7 +90,7 @@ CREATE TABLE card_news (
     first_image_path VARCHAR(255) NOT NULL,
     image_count INT DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (classification_id) REFERENCES classifications(id)
 );
 
