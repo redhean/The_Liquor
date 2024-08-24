@@ -13,4 +13,5 @@ public interface ProducerRepository extends JpaRepository<Producer, Integer> {
     *   - 생산자 삭제 -> deleteById(id)
     *   - 생산자 전체 리스트 반환 -> findAll()
     * */
+
 }
