@@ -6,5 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClassificationRepository extends JpaRepository <Classification, Integer> {
+    /*
+    * TODO
+    *   - 상위 주종을 타고 올라가 리스트로 반환 -> Querydsl
+    * */
+
 
 }
