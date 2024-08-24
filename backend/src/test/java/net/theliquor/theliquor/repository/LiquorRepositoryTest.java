@@ -122,5 +122,4 @@ public class LiquorRepositoryTest {
         // 결과 검증
         assertThat(deletedLiquor).isNotPresent();
     }
-
 }
