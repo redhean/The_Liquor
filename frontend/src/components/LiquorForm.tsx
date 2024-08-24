@@ -113,7 +113,7 @@ export default function LiquorForm() {
           </div>
         </div>
         {/* 이미지와 나머지 입력 폼 컨테이너 */}
-        <div className="grid grid-cols-[1fr,_2fr] gap-4 bg-slate-100">
+        <div className="grid grid-cols-[minmax(24rem,_1fr)_2fr] gap-4 bg-slate-100">
           {/* 이미지 */}
           <div>
             <FormField
@@ -124,11 +124,11 @@ export default function LiquorForm() {
                   <FormLabel>
                     {field.value?.length > 0 ? (
                       <img
-                        className="w-full object-contain bg-slate-400"
+                        className="w-full object-contain bg-slate-400 rounded-lg border border-slate-200"
                         src={URL.createObjectURL(field.value[0])}
                       />
                     ) : (
-                      <div className="size-auto min-h-80 bg-slate-400 flex justify-center items-center">
+                      <div className="w-full h-[24rem] bg-slate-400 flex justify-center items-center rounded-lg">
                         <AiOutlineUpload className="size-8" />
                       </div>
                     )}

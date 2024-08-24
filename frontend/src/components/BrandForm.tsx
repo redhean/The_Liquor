@@ -95,7 +95,7 @@ export default function BrandForm() {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-[1fr,_2fr] gap-4 bg-slate-100">
+        <div className="grid grid-cols-[minmax(24rem,_1fr)_2fr] gap-4 bg-slate-100">
           {/* 이미지 */}
           <div>
             <FormField
@@ -106,11 +106,11 @@ export default function BrandForm() {
                   <FormLabel>
                     {form.getValues("image")?.length > 0 ? (
                       <img
-                        className="w-full object-contain bg-slate-400"
+                        className="w-full object-contain bg-slate-400 border border-slate-200 rounded-lg"
                         src={URL.createObjectURL(form.getValues("image")[0])}
                       />
                     ) : (
-                      <div className="size-auto min-h-80 bg-slate-400 flex justify-center items-center">
+                      <div className="size-auto min-h-80 bg-slate-400 h-[24rem] flex justify-center items-center rounded-lg">
                         <AiOutlineUpload className="size-8" />
                       </div>
                     )}

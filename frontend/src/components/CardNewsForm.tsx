@@ -145,16 +145,16 @@ export default function CardnewsForm() {
               name="images"
               render={({ field }) => (
                 <FormItem>
-                  <div className="grid grid-cols-[3])] gap-4 bg-slate-200 w-full">
+                  <div className="grid grid-cols-[repeat(3,_16rem)] gap-4 w-full p-2 justify-center">
                     {field.value?.length > 0 &&
                       Array.from(field.value).map((image: any) => {
                         return (
-                          <div className="space-y-2 relative">
+                          <div className="space-y-2 relative border border-slate-200 rounded-2xl bg-white overflow-clip">
                             <img
                               key={image.name}
                               src={URL.createObjectURL(image)}
                               alt={image.name}
-                              className="size-64 object-cover bg-white rounded-2xl"
+                              className="size-64 object-cover"
                             />
                             <Button
                               type="button"
@@ -171,13 +171,13 @@ export default function CardnewsForm() {
                                 );
                               }}
                             >
-                              <AiOutlineClose />
+                              <AiOutlineClose className="size-3"/>
                             </Button>
                           </div>
                         );
                       })}
                     <FormLabel>
-                      <div className="size-64 bg-white flex justify-center items-center border border-black rounded-xl">
+                      <div className="size-64 bg-white flex justify-center items-center border border-slate-200 rounded-xl">
                         <AiOutlineUpload className="size-8" />
                       </div>
                     </FormLabel>
