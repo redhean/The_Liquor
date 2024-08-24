@@ -18,4 +18,5 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
     * */
 
     List<Brand> findByProducerId(Integer producerId);
+
 }

@@ -1,27 +1,22 @@
 package net.theliquor.theliquor.repository;
 
 import net.theliquor.theliquor.domain.Brand;
-import net.theliquor.theliquor.domain.Liquor;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.Statement;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@DataJpaTest
+@Sql(scripts = "/data.sql")
 @ActiveProfiles("test")
 public class BrandRepositoryTest {
 
@@ -29,38 +24,46 @@ public class BrandRepositoryTest {
     private BrandRepository brandRepository;
 
     @Autowired
-    private DataSource dataSource;
-
-    @BeforeEach
-    public void setUp() throws Exception {
-        System.out.println("BeforeEach");
-        try (Connection conn = dataSource.getConnection()) {
-            // 데이터베이스를 초기 상태로 재설정
-            ScriptUtils.executeSqlScript(conn, new ClassPathResource("data.sql"));
-        }
-    }
-
-    @AfterEach
-    public void tearDown() throws Exception {
-        System.out.println("AfterEach");
-        try (Connection conn = dataSource.getConnection(); Statement stmt = conn.createStatement()) {
-            // 데이터베이스의 참조 무결성 문제를 피하기 위해 순서대로 삭제
-            stmt.execute("SET REFERENTIAL_INTEGRITY FALSE");
-            stmt.execute("TRUNCATE TABLE card_news_images");
-            stmt.execute("TRUNCATE TABLE card_news");
-            stmt.execute("TRUNCATE TABLE images");
-            stmt.execute("TRUNCATE TABLE liquor");
-            stmt.execute("TRUNCATE TABLE brand");
-            stmt.execute("TRUNCATE TABLE producer");
-            stmt.execute("TRUNCATE TABLE classifications");
-            stmt.execute("TRUNCATE TABLE users");
-            stmt.execute("SET REFERENTIAL_INTEGRITY TRUE");
-        }
-    }
+    private ProducerRepository producerRepository;
 
     @Test
     void BrandFindByProducerIdTest() {
+        // Given
+        Integer producerId = producerRepository.findAll().getFirst().getId();
 
+        // When
+        List<Brand> brands = brandRepository.findByProducerId(producerId);
+
+        // Then
+        assertThat(brands)
+                .isNotEmpty()
+                .allSatisfy(brand -> {
+                    assertThat(brand.getProducer().getId()).isEqualTo(producerId); // 브랜드의 프로듀서 ID가 주어진 ID와 같음
+                });
     }
 
+    @Test
+    void BrandFindAllTest() {
+        // Given
+
+        // When
+        List<Brand> brands = brandRepository.findAll();
+
+        // Then
+        assertThat(brands.size()).isEqualTo(18);
+    }
+
+    @Test
+    void BrandDeleteByIdTest() {
+        // Given
+        Brand brand = brandRepository.findAll().stream().findFirst().orElseThrow(() -> new RuntimeException("No brand found"));
+
+        // When
+        brandRepository.deleteById(brand.getId());
+
+        // Then
+        Optional<Brand> deletedBrand = brandRepository.findById(brand.getId());
+        assertThat(deletedBrand).isNotPresent();
+
+    }
 }
