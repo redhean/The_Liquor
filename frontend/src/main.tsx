@@ -11,6 +11,8 @@ import CreateLiquor from "./pages/admin/CreateLiquor.tsx";
 import CreateBrand from "./pages/admin/CreateBrand.tsx";
 import CreateProducer from "./pages/admin/CreateProducer.tsx";
 import CreateCardnews from "./pages/admin/CreateCardnews.tsx";
+import MainSearch from "./pages/MainSearch.tsx";
+import SearchResult from "./pages/SearchResult.tsx";
 
 const router = createBrowserRouter([
   {
@@ -29,19 +31,19 @@ const router = createBrowserRouter([
               {
                 path: "liquor",
                 index: true,
-                element: <AdminSearch searchType="liquor"/>,
+                element: <AdminSearch searchType="liquor" />,
               },
               {
                 path: "brand",
-                element: <AdminSearch searchType="brand"/>,
+                element: <AdminSearch searchType="brand" />,
               },
               {
                 path: "producer",
-                element: <AdminSearch searchType="producer"/>,
+                element: <AdminSearch searchType="producer" />,
               },
               {
                 path: "cardnews",
-                element: <AdminSearch searchType="cardnews"/>,
+                element: <AdminSearch searchType="cardnews" />,
               },
             ],
           },
@@ -60,8 +62,17 @@ const router = createBrowserRouter([
           {
             path: "createcardnews",
             element: <CreateCardnews />,
-          }
+          },
         ],
+      },
+      {
+        path: "/",
+        index: true,
+        element: <MainSearch />,
+      },
+      {
+        path: "/search",
+        element: <SearchResult />,
       },
     ],
   },
