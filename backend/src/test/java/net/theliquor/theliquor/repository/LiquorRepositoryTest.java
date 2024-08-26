@@ -2,22 +2,14 @@ package net.theliquor.theliquor.repository;
 
 import net.theliquor.theliquor.domain.Liquor;
 import net.theliquor.theliquor.repository.impl.LiquorSearchCond;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.core.io.ClassPathResource;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
