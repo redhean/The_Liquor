@@ -263,3 +263,33 @@ VALUES (2, 4, 29, 'F 플레이버드 비어', 'F PlayBird', '미국', 12, 17, '�
 
 INSERT INTO liquor (producer_id, brand_id, classification_id, korean_name, english_name, country, alcohol, aged, price, ibu, is_domestic_sale, description)
 VALUES (2, 5, 30, 'F 무알콜 맥주', 'F Non-Alc', '미국', 3.7, 1, '대략 2만원', 6, TRUE, '와인 초보들이 즐기기 좋음');
+
+-- card_news
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (29, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (30, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (31, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (32, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (33, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (34, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (35, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (36, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (37, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (38, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (39, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (40, 'test', 'path', 1);
+
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (71, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (72, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (73, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (74, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (75, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (76, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (77, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (78, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (79, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (80, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (81, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (82, 'test', 'path', 1);
+INSERT INTO card_news (classification_id, title, first_image_path, image_count) VALUES (83, 'test', 'path', 1);
+
+
