@@ -32,7 +32,7 @@ public class LiquorSearchImpl implements LiquorSearch{
         Float alcMax = cond.getAlcMax();
         Boolean avail = cond.getAvail();
         Long brand = cond.getBrand();
-        Integer page = cond.getPage();
+        Integer page = (cond.getPage() != null) ? cond.getPage() : 0;
 
         QLiquor liquor = QLiquor.liquor;
         BooleanBuilder builder = new BooleanBuilder();
