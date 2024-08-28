@@ -1,0 +1,556 @@
+{
+  "classifications": [
+    {
+      "id": 1,
+      "parent_id": null,
+      "name": "와인",
+      "children": [
+        {
+          "id": 19,
+          "name": "레드 와인",
+          "children": []
+        },
+        {
+          "id": 20,
+          "name": "로제 와인",
+          "children": []
+        },
+        {
+          "id": 21,
+          "name": "화이트 와인",
+          "children": []
+        },
+        {
+          "id": 22,
+          "name": "주정강화 와인",
+          "children": [
+            {
+              "id": 67,
+              "name": "포트 와인",
+              "children": []
+            },
+            {
+              "id": 68,
+              "name": "셰리 와인",
+              "children": []
+            },
+            {
+              "id": 69,
+              "name": "베르무트",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "name": "스파클링 와인",
+          "children": [
+            {
+              "id": 70,
+              "name": "샴페인",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "parent_id": null,
+      "name": "맥주",
+      "children": [
+        {
+          "id": 24,
+          "name": "에일",
+          "children": [
+            {
+              "id": 71,
+              "name": "페일 에일",
+              "children": []
+            },
+            {
+              "id": 72,
+              "name": "사워 에일",
+              "children": []
+            },
+            {
+              "id": 73,
+              "name": "세종",
+              "children": []
+            },
+            {
+              "id": 74,
+              "name": "고제",
+              "children": []
+            },
+            {
+              "id": 75,
+              "name": "쾰쉬",
+              "children": []
+            },
+            {
+              "id": 76,
+              "name": "앰버 에일",
+              "children": []
+            },
+            {
+              "id": 77,
+              "name": "발리 와인",
+              "children": []
+            },
+            {
+              "id": 78,
+              "name": "브라운 에일",
+              "children": []
+            },
+            {
+              "id": 79,
+              "name": "애비 에일",
+              "children": []
+            },
+            {
+              "id": 80,
+              "name": "스타우트",
+              "children": []
+            },
+            {
+              "id": 81,
+              "name": "포터",
+              "children": []
+            },
+            {
+              "id": 82,
+              "name": "밀맥주",
+              "children": []
+            },
+            {
+              "id": 83,
+              "name": "벨지안 에일",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "라거",
+          "children": [
+            {
+              "id": 84,
+              "name": "페일 라거",
+              "children": []
+            },
+            {
+              "id": 85,
+              "name": "필스너",
+              "children": []
+            },
+            {
+              "id": 86,
+              "name": "헬레스 라거",
+              "children": []
+            },
+            {
+              "id": 87,
+              "name": "다크 라거",
+              "children": []
+            },
+            {
+              "id": 88,
+              "name": "듄켈",
+              "children": []
+            },
+            {
+              "id": 89,
+              "name": "복",
+              "children": []
+            },
+            {
+              "id": 90,
+              "name": "비엔나 라거",
+              "children": []
+            },
+            {
+              "id": 91,
+              "name": "발틱 포터",
+              "children": []
+            },
+            {
+              "id": 92,
+              "name": "미국식 부가물 라거",
+              "children": []
+            },
+            {
+              "id": 93,
+              "name": "슈바르츠 비어",
+              "children": []
+            },
+            {
+              "id": 94,
+              "name": "메르첸",
+              "children": []
+            },
+            {
+              "id": 95,
+              "name": "라우흐 비어",
+              "children": []
+            },
+            {
+              "id": 96,
+              "name": "드라이 비어",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "발포주",
+          "children": []
+        },
+        {
+          "id": 27,
+          "name": "플레이버드 비어",
+          "children": []
+        },
+        {
+          "id": 28,
+          "name": "무알콜 맥주",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "parent_id": null,
+      "name": "위스키",
+      "children": [
+        {
+          "id": 29,
+          "name": "스카치 위스키",
+          "children": []
+        },
+        {
+          "id": 30,
+          "name": "아메리칸 위스키",
+          "children": [
+            {
+              "id": 97,
+              "name": "버번 위스키",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "재패니즈 위스키",
+          "children": []
+        },
+        {
+          "id": 32,
+          "name": "아이리시 위스키",
+          "children": []
+        },
+        {
+          "id": 33,
+          "name": "캐나디안 위스키",
+          "children": []
+        },
+        {
+          "id": 34,
+          "name": "블랜디드 위스키",
+          "children": []
+        },
+        {
+          "id": 35,
+          "name": "싱글 몰트 위스키",
+          "children": []
+        },
+        {
+          "id": 36,
+          "name": "블랜디드 몰트 위스키",
+          "children": []
+        },
+        {
+          "id": 37,
+          "name": "싱글 그레인 위스키",
+          "children": []
+        },
+        {
+          "id": 38,
+          "name": "블랜디드 그레인 위스키",
+          "children": []
+        },
+        {
+          "id": 39,
+          "name": "라이 위스키",
+          "children": []
+        },
+        {
+          "id": 40,
+          "name": "플레이버드 위스키",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "parent_id": null,
+      "name": "보드카",
+      "children": []
+    },
+    {
+      "id": 5,
+      "parent_id": null,
+      "name": "진",
+      "children": [
+        {
+          "id": 41,
+          "name": "런던 드라이 진",
+          "children": []
+        },
+        {
+          "id": 42,
+          "name": "쥬네바",
+          "children": []
+        },
+        {
+          "id": 43,
+          "name": "올드 톰 진",
+          "children": []
+        },
+        {
+          "id": 44,
+          "name": "플레이버드 진",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "parent_id": null,
+      "name": "럼",
+      "children": [
+        {
+          "id": 45,
+          "name": "화이트 럼",
+          "children": []
+        },
+        {
+          "id": 46,
+          "name": "골드 럼",
+          "children": []
+        },
+        {
+          "id": 47,
+          "name": "다크 럼",
+          "children": []
+        },
+        {
+          "id": 48,
+          "name": "플레이버드 럼",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "parent_id": null,
+      "name": "소주",
+      "children": [
+        {
+          "id": 49,
+          "name": "증류식 소주",
+          "children": []
+        },
+        {
+          "id": 50,
+          "name": "희석식 소주",
+          "children": []
+        },
+        {
+          "id": 51,
+          "name": "리큐르 소주",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "parent_id": null,
+      "name": "리큐르",
+      "children": [
+        {
+          "id": 52,
+          "name": "베르무트",
+          "children": []
+        },
+        {
+          "id": 53,
+          "name": "커피 리큐르",
+          "children": []
+        },
+        {
+          "id": 54,
+          "name": "크림 리큐르",
+          "children": []
+        },
+        {
+          "id": 55,
+          "name": "허브 리큐르",
+          "children": []
+        },
+        {
+          "id": 56,
+          "name": "과일 리큐르",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "parent_id": null,
+      "name": "브랜디",
+      "children": [
+        {
+          "id": 57,
+          "name": "포도 브랜디",
+          "children": [
+            {
+              "id": 98,
+              "name": "꼬냑",
+              "children": []
+            },
+            {
+              "id": 99,
+              "name": "아르마냑",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 58,
+          "name": "사과 브랜디",
+          "children": [
+            {
+              "id": 100,
+              "name": "깔바도스",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 59,
+          "name": "기타 브랜디",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "parent_id": null,
+      "name": "과일주",
+      "children": [
+        {
+          "id": 60,
+          "name": "매실주",
+          "children": []
+        },
+        {
+          "id": 61,
+          "name": "사과주",
+          "children": []
+        },
+        {
+          "id": 62,
+          "name": "복분자주",
+          "children": []
+        },
+        {
+          "id": 63,
+          "name": "기타 과실주",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "parent_id": null,
+      "name": "사케",
+      "children": []
+    },
+    {
+      "id": 12,
+      "parent_id": null,
+      "name": "청주",
+      "children": []
+    },
+    {
+      "id": 13,
+      "parent_id": null,
+      "name": "약주",
+      "children": []
+    },
+    {
+      "id": 14,
+      "parent_id": null,
+      "name": "막걸리",
+      "children": []
+    },
+    {
+      "id": 15,
+      "parent_id": null,
+      "name": "메즈칼",
+      "children": [
+        {
+          "id": 64,
+          "name": "데킬라",
+          "children": [
+            {
+              "id": 101,
+              "name": "블랑코",
+              "children": []
+            },
+            {
+              "id": 102,
+              "name": "레포사도",
+              "children": []
+            },
+            {
+              "id": 103,
+              "name": "아네호",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "parent_id": null,
+      "name": "백주",
+      "children": []
+    },
+    {
+      "id": 17,
+      "parent_id": null,
+      "name": "황주",
+      "children": []
+    },
+    {
+      "id": 18,
+      "parent_id": null,
+      "name": "RTD",
+      "children": [
+        {
+          "id": 65,
+          "name": "하이볼",
+          "children": []
+        },
+        {
+          "id": 66,
+          "name": "하드셀쳐",
+          "children": []
+        }
+      ]
+    }
+  ]
+}
