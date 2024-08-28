@@ -13,6 +13,7 @@ import CreateProducer from "./pages/admin/CreateProducer.tsx";
 import CreateCardnews from "./pages/admin/CreateCardnews.tsx";
 import MainSearch from "./pages/MainSearch.tsx";
 import SearchResult from "./pages/SearchResult.tsx";
+import LiqourDetail from "./pages/LiqourDetail.tsx";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
         path: "/search",
         element: <SearchResult />,
       },
+      {
+        path: '/liquor/:idx',
+        element: <LiqourDetail />,
+      }
     ],
   },
 ]);
