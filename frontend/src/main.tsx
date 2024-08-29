@@ -15,6 +15,7 @@ import MainSearch from "./pages/MainSearch.tsx";
 import SearchResult from "./pages/SearchResult.tsx";
 import LiqourDetail from "./pages/LiqourDetail.tsx";
 import CardNewsMain from "./pages/CardNewsMain.tsx";
+import CardNewsDetail from "./pages/CardNewsDetail.tsx";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: '/cardnews',
         element: <CardNewsMain />
+      },
+      {
+        path: '/cardnews/:idx',
+        element: <CardNewsDetail />
       }
     ],
   },
