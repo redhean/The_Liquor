@@ -4,16 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter @Setter
 @AllArgsConstructor
 public class LiquorSearchCond {
 
     private String term;
-    private Integer liquorClass;
+    private List<Integer> liquorClasses;
     private Float alcMin;
     private Float alcMax;
     private Boolean avail;
-    private Long brand;
+    private List<Long> brands;
     private Integer page;
 
     public LiquorSearchCond() {

@@ -25,4 +25,7 @@ public class LiquorListItemDTO {
 
     @JsonProperty("image_path")
     private String imagePath;
+
+    @JsonProperty("brand_id")
+    private Long brandId;
 }

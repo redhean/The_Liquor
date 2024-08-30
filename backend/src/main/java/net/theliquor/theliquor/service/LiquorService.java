@@ -56,6 +56,8 @@ public class LiquorService {
             String imagePath = imageRepository.findImagePathByEntityTypeAndEntityId(Image.EntityType.LIQUOR, liquor.getId());
             itemDTO.setImagePath(imagePath);
 
+            itemDTO.setBrandId(liquor.getBrand().getId());
+
             liquorListItems.add(itemDTO);
         }
 

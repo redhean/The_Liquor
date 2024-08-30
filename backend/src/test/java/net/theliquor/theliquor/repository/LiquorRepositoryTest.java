@@ -10,6 +10,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,13 +28,23 @@ public class LiquorRepositoryTest {
     void LiquorFilterTest() {
         LiquorSearchCond cond = new LiquorSearchCond();
 
+        List<Integer> liquorClasses = new ArrayList<>();
+        liquorClasses.add(1);
+        liquorClasses.add(21);
+        liquorClasses.add(22);
+        liquorClasses.add(25);
+
+        List<Long> brands = new ArrayList<>();
+        brands.add(1L);
+        brands.add(2L);
+
         cond.setTerm("wine");
-        cond.setLiquorClass(1);
+        cond.setLiquorClasses(liquorClasses);
         cond.setAlcMin(1.0F);
         cond.setAlcMax(10.0F);
         cond.setAvail(Boolean.TRUE);
         cond.setPage(0);
-        cond.setBrand(1L);
+        cond.setBrands(brands);
 
         List<Liquor> result = liquorRepository.findLiquorsByFilters(cond);
 
@@ -43,10 +54,18 @@ public class LiquorRepositoryTest {
                 .hasSizeGreaterThan(0) // 결과의 크기가 0보다 큼
                 .allSatisfy(liquor -> {
                     assertThat(liquor.getEnglishName().toLowerCase()).contains("wine"); // 이름에 'wine'이 포함됨 (대소문자 구분 없음)
-                    assertThat(liquor.getClassification().getId()).isEqualTo(1); // 주종이 1
-                    assertThat(liquor.getAlcohol()).isBetween(1.0F, 10.0F); // 알코올 도수가 1.0과 10.0 사이
-                    assertThat(liquor.getIsDomesticSale()).isTrue(); // 판매 여부가 true
-                    assertThat(liquor.getBrand().getId()).isEqualTo(1L); // 브랜드가 1
+
+                    // 주종이 liquorClasses 리스트에 포함된 값 중 하나임
+                    assertThat(liquorClasses).contains(liquor.getClassification().getId());
+
+                    // 알코올 도수가 1.0과 10.0 사이
+                    assertThat(liquor.getAlcohol()).isBetween(1.0F, 10.0F);
+
+                    // 판매 여부가 true
+                    assertThat(liquor.getIsDomesticSale()).isTrue();
+
+                    // 브랜드가 brands 리스트에 포함된 값 중 하나임
+                    assertThat(brands).contains(liquor.getBrand().getId());
                 });
     }
 
