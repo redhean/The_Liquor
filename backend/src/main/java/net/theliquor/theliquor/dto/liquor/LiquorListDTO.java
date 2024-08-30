@@ -1,4 +1,4 @@
-package net.theliquor.theliquor.dto;
+package net.theliquor.theliquor.dto.liquor;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

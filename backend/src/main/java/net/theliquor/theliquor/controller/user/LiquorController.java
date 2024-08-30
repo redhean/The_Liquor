@@ -1,8 +1,8 @@
 package net.theliquor.theliquor.controller.user;
 
 import lombok.RequiredArgsConstructor;
-import net.theliquor.theliquor.dto.LiquorDTO;
-import net.theliquor.theliquor.dto.LiquorListDTO;
+import net.theliquor.theliquor.dto.liquor.LiquorDTO;
+import net.theliquor.theliquor.dto.liquor.LiquorListDTO;
 import net.theliquor.theliquor.repository.impl.LiquorSearchCond;
 import net.theliquor.theliquor.service.LiquorService;
 import org.springframework.web.bind.annotation.*;
