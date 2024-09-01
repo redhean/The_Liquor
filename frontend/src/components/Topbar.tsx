@@ -6,6 +6,7 @@ export default function Topbar() {
       <div>Logo</div>
       <div className="flex gap-4">
         <Link to="/">Home</Link>
+        <Link to="/cardnews">Guide</Link>
         <Link to="/admin">Admin</Link>
       </div>
     </div>

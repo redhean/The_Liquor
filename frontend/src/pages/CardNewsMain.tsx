@@ -86,7 +86,12 @@ export default function CardNewsMain() {
           placeholder="검색어를 입력하세요"
           className="w-full p-2 focus:outline-none"
         />
-        <Button size={"icon"} className="bg-transparent p-0"><AiOutlineSearch className="fill-yellow-400 size-4 stroke-2"/></Button>
+        <AiOutlineSearch
+          className="size-8 p-1 cursor-pointer fill-yellow-400"
+          onClick={() => {
+            navigate("/cardnews?");
+          }}
+        />
       </div>
     );
   };
@@ -141,7 +146,7 @@ export default function CardNewsMain() {
 
   return (
     <div className="flex flex-col justify-center items-center mx-16">
-        <h1 className="self-start text-2xl py-2">카드 뉴스</h1>
+      <h1 className="self-start text-2xl py-2">카드 뉴스</h1>
       <SearchBar />
       <div className="bg-slate-100 grid grid-cols-[16rem,_auto] m-4 gap-8 w-fit">
         {

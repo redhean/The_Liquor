@@ -37,7 +37,7 @@ export default function LiqourSearchItem({
 
   return (
     <div
-      className="grid grid-cols-[7rem,_auto] gap-4 bg-slate-200 p-2 w-full h-fit"
+      className="grid grid-cols-[7rem,_auto] gap-4 bg-slate-200 p-2 w-full h-fit hover:bg-slate-300 cursor-pointer"s
       onClick={() => {
         navigate(`/liquor/${data.id}`);
       }}
