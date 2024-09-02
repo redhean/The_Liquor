@@ -26,8 +26,8 @@ import java.util.Optional;
 public class LiquorService {
 
     private final LiquorRepository liquorRepository;
-    private final ClassificationRepository classificationRepository;
     private final ImageRepository imageRepository;
+    private final MakeClassificationChain makeClassificationChain;
 
     /**
      * 검색 필터 조건에 맞는 주류들을 반환 -> pagination 존재
@@ -50,7 +50,7 @@ public class LiquorService {
             itemDTO.setAlcohol(liquor.getAlcohol());
 
             // Classification 계층 만들기
-            itemDTO.setClassifications(formatClassificationChain(liquor.getClassification().getId()));
+            itemDTO.setClassifications(makeClassificationChain.formatClassificationChain(liquor.getClassification().getId()));
 
             // ImagePath 설정
             String imagePath = imageRepository.findImagePathByEntityTypeAndEntityId(Image.EntityType.LIQUOR, liquor.getId());
@@ -83,7 +83,7 @@ public class LiquorService {
             result.setBrand(liquor.getBrand().getName());
 
             // Classification
-            result.setClassifications(formatClassificationChain(liquor.getClassification().getId()));
+            result.setClassifications(makeClassificationChain.formatClassificationChain(liquor.getClassification().getId()));
 
             result.setKoreanName(liquor.getKoreanName());
             result.setEnglishName(liquor.getEnglishName());
@@ -103,27 +103,5 @@ public class LiquorService {
         });
 
         return result;
-    }
-
-    /**
-     * 주종의 계층을 문자열로 만들어 반환
-     * @param id -> 주류의 classification id
-     * @return '>'로 구분된 classification 계층 문자열. 상위 계층부터 반환
-     */
-    private String formatClassificationChain(Integer id) {
-        StringBuilder makeClassificationChain = new StringBuilder();
-        List<Classification> classifications = classificationRepository.findClassificationChain(id);
-
-        for (int i = 0; i < classifications.size(); i++) {
-            Classification classification = classifications.get(i);
-            makeClassificationChain.append(classification.getName());
-
-            // 마지막 항목이 아니면 '>' 문자를 추가
-            if (i < classifications.size() - 1) {
-                makeClassificationChain.append(" > ");
-            }
-        }
-
-        return makeClassificationChain.toString();
     }
 }
