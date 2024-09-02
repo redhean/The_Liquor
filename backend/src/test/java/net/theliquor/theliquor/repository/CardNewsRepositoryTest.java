@@ -35,7 +35,7 @@ public class CardNewsRepositoryTest {
 
         // When
         // 1,10,11,12,13,14,15,16,17,18,19
-        List<CardNews> result = cardNewsRepository.findCardNewsByFilters("1", 0);
+        List<CardNews> result = cardNewsRepository.findCardNewsByFilters("1", 1);
 
         // Then
         System.out.println(result.size());
@@ -49,13 +49,13 @@ public class CardNewsRepositoryTest {
         // Given
 
         // When
-        List<CardNews> result_whisky = cardNewsRepository.findCardNewsByClassification(3);     // 위스키
-        List<CardNews> result_beer = cardNewsRepository.findCardNewsByClassification(2);     // 맥주
+        List<CardNews> result_whisky = cardNewsRepository.findCardNewsByClassification(3, 1);     // 위스키
+        List<CardNews> result_beer = cardNewsRepository.findCardNewsByClassification(2, 1);     // 맥주
 
         // Then
         System.out.println(result_whisky.size());
         System.out.println(result_beer.size());
-        assertThat(result_whisky.size()).isEqualTo(12);
-        assertThat(result_beer.size()).isEqualTo(13);
+        assertThat(result_whisky.size()).isEqualTo(9);
+        assertThat(result_beer.size()).isEqualTo(9);
     }
 }

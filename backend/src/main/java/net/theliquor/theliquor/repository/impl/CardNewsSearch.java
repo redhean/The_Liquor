@@ -7,5 +7,5 @@ import java.util.List;
 public interface CardNewsSearch {
     List<CardNews> findCardNewsByFilters(String term, Integer page);
 
-    List<CardNews> findCardNewsByClassification(Integer id);
+    List<CardNews> findCardNewsByClassification(Integer id, Integer page);
 }

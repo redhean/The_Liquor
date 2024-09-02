@@ -36,14 +36,14 @@ public class CardNewsSearchImpl implements CardNewsSearch {
             builder.and(cardNews.title.toLowerCase().contains(lowerTerm));
         }
         if(page == null) {
-            page = 0;
+            page = 1;
         }
 
         List<CardNews> result = query
                 .select(cardNews)
                 .from(cardNews)
                 .where(builder)
-                .offset((long) page * Constants.CARD_NEWS_PAGE_SIZE)
+                .offset((long) (page - 1) * Constants.CARD_NEWS_PAGE_SIZE)
                 .limit(Constants.CARD_NEWS_PAGE_SIZE)
                 .fetch();
 
@@ -51,7 +51,7 @@ public class CardNewsSearchImpl implements CardNewsSearch {
     }
 
     @Override
-    public List<CardNews> findCardNewsByClassification(Integer id) {
+    public List<CardNews> findCardNewsByClassification(Integer id, Integer page) {
         QCardNews cardNews = QCardNews.cardNews;
 
         // 하위 분류 ID를 수집하기 위한 재귀 함수
@@ -65,6 +65,8 @@ public class CardNewsSearchImpl implements CardNewsSearch {
         List<CardNews> result = query
                 .selectFrom(cardNews)
                 .where(cardNews.classification.id.in(descendantIds))
+                .offset((long) (page - 1) * Constants.CARD_NEWS_PAGE_SIZE)
+                .limit(Constants.CARD_NEWS_PAGE_SIZE)
                 .fetch();
 
         return result;
