@@ -17,7 +17,7 @@ public class LiquorController {
     private final LiquorService liquorService;
 
     @GetMapping("/search")
-    public LiquorListDTO getLiquorByFilters(
+    public LiquorListDTO getLiquorsByFilters(
             @RequestParam(value = "term", required = false) String term,
             @RequestParam(value = "class", required = false) List<Integer> liquorClasses,
             @RequestParam(value = "alc-min", required = false) Float alcMin,
