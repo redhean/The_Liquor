@@ -26,6 +26,13 @@ public class GuideService {
     private final CardNewsImageRepository cardNewsImageRepository;
     private final MakeClassificationChain makeClassificationChain;
 
+    /**
+     * 주종과 검색어를 기준으로 카드 뉴스 검색 -> 주종을 우선으로 찾는걸로
+     * @param term
+     * @param cardNewsClass
+     * @param page
+     * @return  CardNewsListDTO
+     */
     public CardNewsListDTO findCardNewsByFilter(String term, Integer cardNewsClass, Integer page) {
         List<CardNews> cardNews = new ArrayList<>();
 
@@ -58,6 +65,11 @@ public class GuideService {
         return result;
     }
 
+    /**
+     * 카드 뉴스 이미지들까지 함께 반환
+     * @param id
+     * @return CardNewsDTO
+     */
     public CardNewsDTO findCardNewsById(Integer id) {
         Optional<CardNews> optionalCardNews = cardNewsRepository.findById(id);
 
