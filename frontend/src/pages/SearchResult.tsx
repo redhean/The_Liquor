@@ -10,11 +10,14 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { useLoaderData } from "react-router-dom";
 
 export default function SearchResult() {
+  const searchResult = useLoaderData();
+
   return (
     <div className="bg-slate-100 h-full">
-      <h1 className="text-3xl text-center">Search Result</h1>
+      {/* <h1 className="text-3xl text-center">Search Result</h1> */}
       <div className="flex flex-row w-full bg-yellow-100">
         <SearchFilter />
         <div className="w-full space-y-2">
@@ -22,7 +25,9 @@ export default function SearchResult() {
             {/* 국내 판매 여부 토글 */}
             <div className="flex flex-row gap-1 justify-center items-center">
               <Switch id="domestic" />
-              <Label htmlFor="domestic" className="font-normal">국내 판매</Label>
+              <Label htmlFor="domestic" className="font-normal">
+                국내 판매
+              </Label>
             </div>
             {/* 필터링 */}
             <Select>
@@ -38,7 +43,11 @@ export default function SearchResult() {
               </SelectContent>
             </Select>
           </div>
-          <LiqourSearchItem />
+          <div className="flex flex-row flex-wrap gap-2">
+            {searchResult.data.liquor_list.map((item: any) => (
+              <LiqourSearchItem key={item.id} data={item} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
