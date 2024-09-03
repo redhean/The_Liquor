@@ -12,10 +12,11 @@ import CreateBrand from "./pages/admin/CreateBrand.tsx";
 import CreateProducer from "./pages/admin/CreateProducer.tsx";
 import CreateCardnews from "./pages/admin/CreateCardnews.tsx";
 import MainSearch from "./pages/MainSearch.tsx";
-import SearchResult from "./pages/SearchResult.tsx";
+import SearchResult, {loader as searchLoader} from "./pages/SearchResult.tsx";
 import LiqourDetail from "./pages/LiqourDetail.tsx";
 import CardNewsMain from "./pages/CardNewsMain.tsx";
 import CardNewsDetail from "./pages/CardNewsDetail.tsx";
+import { searchLiqour } from "./services/liqour.ts";
 
 const router = createBrowserRouter([
   {
@@ -69,12 +70,13 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/",
-        index: true,
-        element: <MainSearch />,
-      },
-      {
         path: "/search",
+        loader: ({request}) => {
+          console.log(request);
+          const url = new URL(request.url);
+          const term = url.searchParams.get('term') ?? 'A';
+          return searchLiqour({params: {term: term, page: 1}});
+        },
         element: <SearchResult />,
       },
       {
@@ -90,6 +92,11 @@ const router = createBrowserRouter([
         element: <CardNewsDetail />
       }
     ],
+  },
+  {
+    path: "/",
+    index: true,
+    element: <MainSearch />,
   },
 ]);
 
