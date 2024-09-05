@@ -12,8 +12,10 @@ import net.theliquor.theliquor.repository.ClassificationRepository;
 import net.theliquor.theliquor.repository.ImageRepository;
 import net.theliquor.theliquor.repository.LiquorRepository;
 import net.theliquor.theliquor.repository.impl.LiquorSearchCond;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional
 public class LiquorService {
+
+    @Value("${com.example.upload.path}")
+    private String uploadPath;
 
     private final LiquorRepository liquorRepository;
     private final ImageRepository imageRepository;
@@ -103,5 +108,14 @@ public class LiquorService {
         });
 
         return result;
+    }
+
+    public LiquorDTO saveLiquor(Liquor liquor, MultipartFile image) {
+        liquorRepository.save(liquor);
+
+        if(!image.getContentType().startsWith("image")) {
+            return null;
+        }
+        return null;
     }
 }
