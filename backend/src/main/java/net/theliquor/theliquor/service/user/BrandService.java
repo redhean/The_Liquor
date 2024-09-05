@@ -1,4 +1,4 @@
-package net.theliquor.theliquor.service;
+package net.theliquor.theliquor.service.user;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

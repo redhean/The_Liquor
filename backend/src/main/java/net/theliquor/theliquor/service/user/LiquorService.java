@@ -1,21 +1,17 @@
-package net.theliquor.theliquor.service;
+package net.theliquor.theliquor.service.user;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.theliquor.theliquor.domain.Classification;
 import net.theliquor.theliquor.domain.Image;
 import net.theliquor.theliquor.domain.Liquor;
-import net.theliquor.theliquor.dto.liquor.LiquorDTO;
+import net.theliquor.theliquor.dto.liquor.LiquorResponseDTO;
 import net.theliquor.theliquor.dto.liquor.LiquorListDTO;
 import net.theliquor.theliquor.dto.liquor.LiquorListItemDTO;
-import net.theliquor.theliquor.repository.ClassificationRepository;
 import net.theliquor.theliquor.repository.ImageRepository;
 import net.theliquor.theliquor.repository.LiquorRepository;
 import net.theliquor.theliquor.repository.impl.LiquorSearchCond;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +22,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional
 public class LiquorService {
-
-    @Value("${com.example.upload.path}")
-    private String uploadPath;
 
     private final LiquorRepository liquorRepository;
     private final ImageRepository imageRepository;
@@ -76,10 +69,10 @@ public class LiquorService {
      * @param id -> Liquor id
      * @return LiquorDTO
      */
-    public LiquorDTO findLiquorById(Long id) {
+    public LiquorResponseDTO findLiquorById(Long id) {
         Optional<Liquor> optionalLiquor = liquorRepository.findById(id);
 
-        LiquorDTO result = new LiquorDTO();
+        LiquorResponseDTO result = new LiquorResponseDTO();
 
         optionalLiquor.ifPresent(liquor -> {
             // Liquor가 존재하는 경우 DTO에 정보 설정
@@ -108,14 +101,5 @@ public class LiquorService {
         });
 
         return result;
-    }
-
-    public LiquorDTO saveLiquor(Liquor liquor, MultipartFile image) {
-        liquorRepository.save(liquor);
-
-        if(!image.getContentType().startsWith("image")) {
-            return null;
-        }
-        return null;
     }
 }
