@@ -60,8 +60,23 @@ public class Liquor {
     private String description;
 
     @Column(name = "adv")
-    private Integer adv;
+    private Integer adv = 0;
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        if (this.updatedAt == null) {
+            this.updatedAt = LocalDateTime.now(); // 엔티티가 처음 생성될 때 현재 시간 설정
+        }
+        if (this.adv == null) {
+            this.adv = 0; // adv의 기본값을 설정
+        }
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now(); // 엔티티가 업데이트될 때 현재 시간으로 갱신
+    }
 }
