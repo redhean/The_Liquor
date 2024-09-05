@@ -1,10 +1,10 @@
 package net.theliquor.theliquor.controller.user;
 
 import lombok.RequiredArgsConstructor;
-import net.theliquor.theliquor.dto.liquor.LiquorDTO;
+import net.theliquor.theliquor.dto.liquor.LiquorResponseDTO;
 import net.theliquor.theliquor.dto.liquor.LiquorListDTO;
 import net.theliquor.theliquor.repository.impl.LiquorSearchCond;
-import net.theliquor.theliquor.service.LiquorService;
+import net.theliquor.theliquor.service.user.LiquorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,8 +37,8 @@ public class LiquorController {
     }
 
     @GetMapping("/{id}")
-    public LiquorDTO getLiquorById(@PathVariable Long id) {
-        LiquorDTO result = liquorService.findLiquorById(id);
+    public LiquorResponseDTO getLiquorById(@PathVariable Long id) {
+        LiquorResponseDTO result = liquorService.findLiquorById(id);
         return result;
     }
 

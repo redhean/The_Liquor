@@ -3,7 +3,7 @@ package net.theliquor.theliquor.controller.user;
 import lombok.RequiredArgsConstructor;
 import net.theliquor.theliquor.dto.brand.BrandDTO;
 import net.theliquor.theliquor.dto.brand.BrandInFilterDTO;
-import net.theliquor.theliquor.service.BrandService;
+import net.theliquor.theliquor.service.user.BrandService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -3,7 +3,7 @@ package net.theliquor.theliquor.controller.user;
 import lombok.RequiredArgsConstructor;
 import net.theliquor.theliquor.dto.guide.CardNewsDTO;
 import net.theliquor.theliquor.dto.guide.CardNewsListDTO;
-import net.theliquor.theliquor.service.GuideService;
+import net.theliquor.theliquor.service.user.GuideService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
