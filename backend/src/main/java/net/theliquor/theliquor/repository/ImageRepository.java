@@ -16,6 +16,10 @@ public interface ImageRepository extends JpaRepository<Image, Integer> {
     *   - 이미지 삭제 -> deleteById(id)
     * */
 
+    @Query("SELECT i FROM Image i WHERE i.entityType = :entityType AND i.entityId = :entityId")
+    Image findImageByEntityTypeAndEntityId(@Param("entityType") Image.EntityType entityType,
+                                           @Param("entityId") Long entityId);
+
     @Query("SELECT i.imagePath FROM Image i WHERE i.entityType = :entityType AND i.entityId = :entityId")
     String findImagePathByEntityTypeAndEntityId(@Param("entityType") Image.EntityType entityType,
                                                 @Param("entityId") Long entityId);

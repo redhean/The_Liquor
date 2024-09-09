@@ -2,8 +2,12 @@ package net.theliquor.theliquor.repository;
 
 import net.theliquor.theliquor.domain.Liquor;
 import net.theliquor.theliquor.repository.impl.LiquorSearch;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Pageable;
 
 @Repository
 public interface LiquorRepository extends JpaRepository<Liquor, Long>, LiquorSearch {
@@ -16,4 +20,9 @@ public interface LiquorRepository extends JpaRepository<Liquor, Long>, LiquorSea
     *   - 술 수정 -> save
     *   - 술 삭제 -> deleteById(id)
     * */
+
+    @Query("SELECT l FROM Liquor l WHERE l.koreanName LIKE %:term% OR l.englishName LIKE %:term%")
+    Page<Liquor> findLiquorByTerm(@Param("term") String term, Pageable pageable);
+
+
 }
