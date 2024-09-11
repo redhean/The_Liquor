@@ -14,6 +14,7 @@ public interface CardNewsImageRepository extends JpaRepository<CardNewsImage, Lo
     /*
     * TODO
     *   - CardNews에 따른 이미지 반환 (order by display_order) -> @Query
+    *   - CardNews에 따른 이미지 전체 삭제 -> @Query
     *   - 새로운 CardNewsImage 추가 -> save
     *   - CardNewsImage 수정 -> save
     *   - CardNewsImage 삭제 -> delete
