@@ -3,13 +3,12 @@ package net.theliquor.theliquor.dto.liquor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.theliquor.theliquor.domain.Brand;
 
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-public class LiquorDTO {
+public class LiquorResponseDTO {
 
     @JsonProperty("id")
     private Long id;
