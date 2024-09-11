@@ -2,6 +2,7 @@ package net.theliquor.theliquor.repository;
 
 import net.theliquor.theliquor.domain.CardNewsImage;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -20,4 +21,9 @@ public interface CardNewsImageRepository extends JpaRepository<CardNewsImage, Lo
 
     @Query("SELECT cni FROM CardNewsImage cni WHERE cni.cardNews.id = :cardNewsId ORDER BY cni.displayOrder ASC")
     List<CardNewsImage> findImagesByCardNewsId(@Param("cardNewsId") Integer cardNewsId);
+
+    @Modifying
+    @Query("DELETE FROM CardNewsImage cni WHERE cni.cardNews.id = :cardNewsId")
+    void deleteAllByCardNewsId(@Param("cardNewsId") Integer cardNewsId);
+
 }
