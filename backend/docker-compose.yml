@@ -31,7 +31,7 @@ services:
     volumes:
       - /Users/jeongdaegyo/Desktop/The_Liquor_Data/images/liquor:/data/images/liquor  # 서버 배포 시 변경
       - /Users/jeongdaegyo/Desktop/The_Liquor_Data/images/brand:/data/images/brand    # 서버 배포 시 변경
-      - /Users/jeongdaegyo/Desktop/The_Liquor_Data/images/brand:/data/images/card_news    # 서버 배포 시 변경
+      - /Users/jeongdaegyo/Desktop/The_Liquor_Data/images/card_news:/data/images/card_news    # 서버 배포 시 변경
     environment:
       SPRING_DATASOURCE_URL: ${DB_URL}
       SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
