@@ -80,14 +80,14 @@ export default function CardNewsMain() {
 
   const SearchBar = () => {
     return (
-      <div className="flex flex-row justify-between items-center w-3/5 m-4 border-b-2 border-yellow-400">
+      <div className="flex flex-row justify-between items-center w-3/5 m-4 border border-[var(--accent)] bg-white px-4 rounded-full">
         <input
           type="search"
           placeholder="검색어를 입력하세요"
           className="w-full p-2 focus:outline-none"
         />
         <AiOutlineSearch
-          className="size-8 p-1 cursor-pointer fill-yellow-400"
+          className="size-8 p-1 cursor-pointer fill-[var(--accent)]"
           onClick={() => {
             navigate("/cardnews?");
           }}
@@ -131,7 +131,7 @@ export default function CardNewsMain() {
   }: CardNewsItemProps) => {
     return (
       <div
-        className="flex flex-col gap-1 hover:bg-slate-300 cursor-pointe p-2 w-52 h-64 overflow-clip"
+        className="flex flex-col gap-2 hover:bg-orange-200 rounded-md cursor-pointe p-2 w-52 h-64 overflow-clip"
         onClick={() => {
           navigate(`/cardnews/${id}`);
         }}
@@ -145,18 +145,18 @@ export default function CardNewsMain() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mx-16">
-      <h1 className="self-start text-2xl py-2">카드 뉴스</h1>
+    <div className="flex flex-col justify-center items-center mx-16 pt-24">
+      {/* <h1 className="self-start text-2xl py-2">카드 뉴스</h1> */}
       <SearchBar />
-      <div className="bg-slate-100 grid grid-cols-[16rem,_auto] m-4 gap-8 w-fit">
+      <div className="grid grid-cols-[14rem,_auto] m-4 gap-8 w-fit">
         {
-          <div className="bg-yellow-400">
+          <div className="text-sm px-1 py-2 h-fit bg-white rounded-xl">
             {classfications.classifications.map((item) => (
               <SideMenu item={item} />
             ))}
           </div>
         }
-        <div className="bg-yellow-200 flex flex-col w-fit xl:grid-cols-4 lg:grid-cols-3 md:grid md:grid-cols-2 h-fit">
+        <div className="flex flex-col w-fit xl:grid-cols-4 lg:grid-cols-3 md:grid md:grid-cols-2 h-fit gap-2">
           {dummyData.map((item) => (
             <CardNewsItem {...item} />
           ))}

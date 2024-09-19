@@ -1,4 +1,4 @@
-import { A11y, Navigation, Pagination, Zoom } from "swiper/modules";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/zoom";
 
 import "./swiperStyle.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // {
 // ”classifications”:,
@@ -45,10 +45,24 @@ export default function CardNewsDetail({
     setIsImgFull(!isImgFull);
   };
 
+  const handleEscPressed = (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setIsImgFull(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleEscPressed);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscPressed);
+    };
+  }, []);
+
   return (
-    <div className={"lg:mx-64 md:mx-32 my-2 mx-2 bg-slate-200"}>
+    <div className={"lg:mx-64 md:mx-32 my-2 mx-2 pt-24"}>
       {isImgFull && (
-        <div className="fixed top-0 left-0 w-screen bg-slate-500 h-screen z-1 bg-opacity-30 backdrop-blur"></div>
+        <div className="fixed top-0 left-0 w-screen bg-slate-500 h-screen z-2 bg-opacity-30 backdrop-blur"></div>
       )}
       <p>{item.classifications}</p>
       <h1 className="text-3xl font-semibold">{item.title}</h1>
@@ -62,16 +76,17 @@ export default function CardNewsDetail({
           "--swiper-background-color": "transparent",
           cursor: "pointer",
         }}
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination, Keyboard]}
         centeredSlides={true}
         slidesPerView={1}
         navigation={true}
         pagination={{
           type: "fraction",
         }}
+        keyboard={{ enabled: true }}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
       >
         {item.image_path.map((path, index) => (
           <SwiperSlide key={index} onClick={handleImgClick}>

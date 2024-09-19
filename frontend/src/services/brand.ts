@@ -1,8 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
+const url = import.meta.env.VITE_API_URL;
 
 // 술 상세 페이지에서 브랜드 불러오기
-export function getLiqourBrand({id}: {id: number}) {
-    const response =  axios.get(`${process.env.}/brand/${id}`).then((res) => {
-        console.log(res); 
-    };
+export async function getLiquorBrand({ id }: { id: string }) {
+  return axios.get(`${url}/brand/${id}`);
 }
