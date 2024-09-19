@@ -10,35 +10,50 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { useLoaderData, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { searchTermSelector } from "@/slices/searchSlice";
-import { useState } from "react";
+import { createSearchParams, useNavigate } from "react-router-dom";
+import { parseURLtoParams, searchLiquor } from "@/services/liquor";
+import { useEffect, useState } from "react";
+import { useAppSelector } from "@/hooks";
 
 export default function SearchResult() {
-  const searchResult = useLoaderData();
-  const searchTerm = useSelector(searchTermSelector);
+  const url = window.location.href;
   const navigate = useNavigate();
-  const [isDomeestic, setIsDomestic] = useState<boolean>(true);
+  const searchTerm = useAppSelector((state)=>state.search.term);
+  const params = parseURLtoParams(url);
 
-  const handleDomesticCheckedChange = (checked: boolean) => {
-    navigate(`/search?term=${searchTerm}&avail=${checked}`);
-    setIsDomestic(!isDomeestic);
+  const [checked, setChecked] = useState(true);
+  const [response, setResponse] = useState();
+
+  const handleCheckChange = (checked: boolean) => {
+    navigate({
+      pathname: "/search",
+      search: createSearchParams({
+        ...params,
+        avail: checked ? "true" : "false",
+      }).toString(),
+    }),
+      setChecked(checked);
   };
+
+  useEffect(() => {
+    searchLiquor({ params }).then((value) => {
+      setResponse(value.data);
+    });
+  }, [checked, searchTerm]);
 
   return (
     <div className="pt-24 bg-[var(--maincolor)] px-10">
       {/* <h1 className="text-3xl text-center">Search Result</h1> */}
       <div className="flex flex-row w-full gap-4">
-        <SearchFilter searchTerm={searchTerm} />
+        <SearchFilter searchTerm={params.term} />
         <div className="w-full space-y-2">
           <div className="flex flex-row w-full justify-between">
             {/* 국내 판매 여부 토글 */}
             <div className="flex flex-row gap-2 justify-center items-center">
               <Switch
                 id="domestic"
-                onCheckedChange={handleDomesticCheckedChange}
-                checked={isDomeestic}
+                onCheckedChange={handleCheckChange}
+                checked={checked}
               />
               <Label htmlFor="domestic" className="font-normal">
                 국내 판매
@@ -59,12 +74,13 @@ export default function SearchResult() {
             </Select>
           </div>
           <div className="flex flex-row flex-wrap gap-2">
-            {searchResult.data.liquor_list.length
-              ? searchResult.data.liquor_list.map((item: any) => (
+            {response?.liquor_list?.length
+              ? response.liquor_list.map((item: any) => (
                   <LiqourSearchItem key={item.id} data={item} />
                 ))
               : "검색 결과가 없습니다."}
           </div>
+          <div id="target" className="h-1 bg-red-50" />
         </div>
       </div>
     </div>

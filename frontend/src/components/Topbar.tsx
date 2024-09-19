@@ -1,7 +1,12 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  createSearchParams,
+  Link,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Input } from "./ui/input";
-import { searchTermSelector, termChange } from "@/slices/searchSlice";
+import { termChange } from "@/slices/searchSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { useState } from "react";
 
@@ -10,14 +15,21 @@ export default function Topbar() {
   const location = useLocation();
 
   const SearchBar = () => {
-    const searchTerm = useAppSelector(searchTermSelector);
+    const searchTerm = useAppSelector((state) => state.search.term);
     const dispatch = useAppDispatch();
     const [searchValue, setSearchValue] = useState(searchTerm);
 
     const handleSearch = () => {
       dispatch(termChange(searchValue));
-      navigate(`/search?term=${searchValue}`);
+      // dispatch(term)
+      navigate({
+        pathname: "search",
+        search: `?${createSearchParams({
+          term: searchValue,
+        }).toString()}`,
+      });
     };
+
     const handlePressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Enter") {
         handleSearch();

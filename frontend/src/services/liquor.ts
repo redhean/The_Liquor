@@ -3,27 +3,48 @@ import axios from "axios";
 const url = import.meta.env.VITE_API_URL;
 // 검색 시 사용
 // liquor/search?term=&class=&alc-min=&alc-max=&avail=&brand=&page=
-export type SearchLiqourParams = {
+export interface SearchLiqourParams {
   term: string;
-  alcMin?: number;
+  alcMin?: string;
+  alcMax?: string;
   class?: string | undefined;
-  alcMax?: number;
-  avail?: boolean;
+  avail: string;
   brand?: string | undefined;
-  page: number;
+  page: string;
 };
 
-export async function searchLiqour({ params }: { params: SearchLiqourParams }) {
-  // 만약 파라마터에 nan이 들어가면 제거
-  if (isNaN(params.alcMin as number)) delete params.alcMin;
-  if (isNaN(params.alcMax as number)) delete params.alcMax;
-  if (params.class && params.class.length === 0) delete params.class;
-  if (params.brand && params.brand.length === 0) delete params.brand;
-
+export async function searchLiquor({ params }: { params: SearchLiqourParams }) {
   return axios.get(`${url}/liquor/search`, { params });
 }
 
 // id 값으로 상세 정보 가져오기
-export async function getLiquor({ id }: { id: string}) {
-  return axios.get(`${url}/liquor/${id}`); 
+export async function getLiquor({ id }: { id: string }) {
+  return axios.get(`${url}/liquor/${id}`);
+}
+
+// url 값 param으로 변환
+export function parseURLtoParams(url: string): SearchLiqourParams {
+  // 값 추출(string, number);
+  console.log("render")
+
+  const requestURL = new URL(url).searchParams;
+  const term = requestURL.get("term") || "";
+  const alcMax = requestURL.get("alcMax") || "100";
+  const alcMin = requestURL.get("alcMin") || "0";
+  const avail = requestURL.get("avail") || "true";
+  const classificationString = requestURL.get("class") || "";
+  const brandStirng = requestURL.get("brand") || "";
+  const page = requestURL.get("page") || "1";
+
+  const params: SearchLiqourParams = {
+    term,
+    alcMin,
+    alcMax,
+    page,
+    avail,
+    brand: brandStirng,
+    class: classificationString,
+  };
+
+  return params;
 }

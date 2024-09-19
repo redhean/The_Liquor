@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "@/hooks";
-import { searchTermSelector } from "@/slices/searchSlice";
 
 type classficationType = {
   id: number;
@@ -91,18 +90,18 @@ export default function SearchFilter({ searchTerm }: { searchTerm: string }) {
     }
   };
 
-  useEffect(() => {
-    navigate(
-      `/search?term=${searchTerm}&class=${clickedClassifications.join(",")}`,
-    );
-  }, [clickedClassifications]);
+  // useEffect(() => {
+  //   navigate(
+  //     `/search?term=${searchTerm}&class=${clickedClassifications.join(",")}`,
+  //   );
+  // }, [clickedClassifications]);
 
   return (
     <section className="flex flex-col w-72 px-2 py-4 gap-2">
       {/* <span className="text-xl">상세 검색</span> */}
       <div className="text-sm px-1 py-2 h-fit bg-white rounded-xl">
-        <span className="font-semibold text-base flex justify-center">주종</span>
-        <hr className="border-black border-t-2 mb-2"/>
+        <span className="font-base text-base flex justify-center">주종</span>
+        <hr className="border-black border-t-1 mb-2"/>
         {classfications.classifications.map((item: classficationType) => (
           <ClassificationItem
             key={item.id}

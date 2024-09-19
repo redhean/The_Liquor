@@ -147,7 +147,7 @@ export default function CardNewsMain() {
   return (
     <div className="flex flex-col justify-center items-center mx-16 pt-24">
       {/* <h1 className="self-start text-2xl py-2">카드 뉴스</h1> */}
-      <SearchBar />
+      {/* <SearchBar /> */}
       <div className="grid grid-cols-[14rem,_auto] m-4 gap-8 w-fit">
         {
           <div className="text-sm px-1 py-2 h-fit bg-white rounded-xl">
