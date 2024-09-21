@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.theliquor.theliquor.config.login.Role;
 
 @Getter
 @Setter
@@ -25,12 +26,10 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "is_superuser")
-    private Boolean isSuperuser;
-
-    @Column(name = "is_staff")
-    private Boolean isStaff;
-
     @Column(name = "is_active")
     private Boolean isActive;
+
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

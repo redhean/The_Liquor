@@ -1,6 +1,6 @@
 package net.theliquor.theliquor.repository;
 
-import net.theliquor.theliquor.domain.User;
+import net.theliquor.theliquor.domain.Member;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +18,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class UserRepositoryTest {
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository userRepository;
 
     @Test
     void UserFindByUsernameTest() {
         // Given
-        User user = new User();
+        Member user = new Member();
         user.setUsername("redhean");
         userRepository.save(user);
 
         // When
-        User result = userRepository.findByUsername("redhean");
+        Member result = userRepository.findByUsername("redhean");
 
         // Then
         assertThat(result).isNotNull();

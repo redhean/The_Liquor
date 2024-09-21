@@ -249,7 +249,7 @@ public class AdminBrandService {
 
                     // 이미지 저장
                     Image img = new Image();
-                    img.setEntityType(Image.EntityType.LIQUOR);
+                    img.setEntityType(Image.EntityType.BRAND);
                     img.setEntityId(savedBrand.getId());
                     img.setImagePath(imagePath);
                     imageRepository.save(img);
