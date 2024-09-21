@@ -1,6 +1,8 @@
 spring:
   application:
     name: theliquor
+  config:
+    import: optional:file:.env[.properties]
   datasource:
     url: ${DB_URL}
     username: ${SPRING_DATASOURCE_USERNAME}

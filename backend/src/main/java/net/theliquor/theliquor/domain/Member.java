@@ -13,7 +13,7 @@ import net.theliquor.theliquor.config.login.Role;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

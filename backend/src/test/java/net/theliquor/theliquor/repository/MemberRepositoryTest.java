@@ -15,20 +15,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @Sql(scripts = "/data.sql")
 @ActiveProfiles("test")
-public class UserRepositoryTest {
+public class MemberRepositoryTest {
 
     @Autowired
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Test
     void UserFindByUsernameTest() {
         // Given
         Member user = new Member();
         user.setUsername("redhean");
-        userRepository.save(user);
+        memberRepository.save(user);
 
         // When
-        Member result = userRepository.findByUsername("redhean");
+        Member result = memberRepository.findByUsername("redhean");
 
         // Then
         assertThat(result).isNotNull();

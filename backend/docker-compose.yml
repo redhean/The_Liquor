@@ -29,12 +29,15 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - /Users/jeongdaegyo/Desktop/The_Liquor_Data/images/liquor:/data/images/liquor  # 서버 배포 시 변경
-      - /Users/jeongdaegyo/Desktop/The_Liquor_Data/images/brand:/data/images/brand    # 서버 배포 시 변경
-      - /Users/jeongdaegyo/Desktop/The_Liquor_Data/images/card_news:/data/images/card_news    # 서버 배포 시 변경
+      - ${HOST_IMAGE_DIRECTORY}/liquor:/data/images/liquor  # 서버 배포 시 변경
+      - ${HOST_IMAGE_DIRECTORY}/brand:/data/images/brand    # 서버 배포 시 변경
+      - ${HOST_IMAGE_DIRECTORY}/card_news:/data/images/card_news    # 서버 배포 시 변경
     environment:
       SPRING_DATASOURCE_URL: ${DB_URL}
       SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
       SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_MAGIC_WORD: ${ADMIN_MAGIC_WORD}
     depends_on:
       - database
