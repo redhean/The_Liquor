@@ -2,14 +2,14 @@ package net.theliquor.theliquor.controller.admin;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.theliquor.theliquor.config.Responses;
 import net.theliquor.theliquor.domain.Producer;
 import net.theliquor.theliquor.dto.ResponseDTO;
 import net.theliquor.theliquor.service.admin.AdminProducerService;
+import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @RestController
@@ -18,6 +18,7 @@ import java.util.Optional;
 public class AdminProducerController {
 
     private final AdminProducerService adminProducerService;
+    private final MessageSource messageSource;
 
     // 생산자 리스트 반환
     @GetMapping("producer")
@@ -30,9 +31,18 @@ public class AdminProducerController {
     @PostMapping("post/producer")
     public ResponseDTO createProducer(@RequestBody Map<String, String> request) {
         // Validate
-        // TODO
-
         String name = request.get("name");
+        if (name == null || name.trim().isEmpty()) {
+            ResponseDTO response = new ResponseDTO();
+            List<String> errors = new ArrayList<>();
+            Locale locale = Locale.KOREA;
+
+            errors.add(messageSource.getMessage("AdminProducerController.name.null", new Object[]{0}, locale));
+            response.setResult(Responses.Result.FAIL.ordinal());
+            response.setErrors(errors);
+            return response;
+        }
+
         ResponseDTO result = adminProducerService.saveProducer(name);
         return result;
     }
@@ -49,7 +59,19 @@ public class AdminProducerController {
             @PathVariable Integer id,
             @RequestBody Map<String, String> request
     ) {
+        // Validation
         String name = request.get("name");
+        if (name == null || name.trim().isEmpty()) {
+            ResponseDTO response = new ResponseDTO();
+            List<String> errors = new ArrayList<>();
+            Locale locale = Locale.KOREA;
+
+            errors.add(messageSource.getMessage("AdminProducerController.name.null", new Object[]{0}, locale));
+            response.setResult(Responses.Result.FAIL.ordinal());
+            response.setErrors(errors);
+            return response;
+        }
+
         ResponseDTO result = adminProducerService.updateProducer(id, name);
         return result;
     }

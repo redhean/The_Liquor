@@ -1,5 +1,6 @@
 package net.theliquor.theliquor.controller.admin;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.theliquor.theliquor.config.Responses;
@@ -9,6 +10,8 @@ import net.theliquor.theliquor.dto.liquor.LiquorResponseDTO;
 import net.theliquor.theliquor.service.admin.AdminLiquorService;
 import net.theliquor.theliquor.service.user.LiquorService;
 import org.springframework.http.MediaType;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +22,7 @@ import java.util.List;
 @RequestMapping("admin")
 @RequiredArgsConstructor
 @Slf4j
+@Validated
 public class AdminLiquorController {
 
     private final AdminLiquorService adminLiquorService;
@@ -27,12 +31,10 @@ public class AdminLiquorController {
     // 술 생성
     @PostMapping(value = "post/liquor", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseDTO createLiquor(
-            @RequestPart(value = "liquor") LiquorRequestDTO liquor,
+            @RequestPart(value = "liquor") @Valid LiquorRequestDTO liquor,
             @RequestPart(value = "image") MultipartFile image
     ) {
         // Validation
-        // TODO
-
         // MultipartFile이 모두 image인지 확인
         ResponseDTO result = new ResponseDTO();
         List<String> errors = new ArrayList<>();
@@ -60,13 +62,11 @@ public class AdminLiquorController {
     @PutMapping(value = "update/liquor/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseDTO updateLiquor(
             @PathVariable Long id,
-            @RequestPart(value = "liquor") LiquorRequestDTO liquor,
+            @RequestPart(value = "liquor") @Valid LiquorRequestDTO liquor,
             @RequestPart(value = "image") MultipartFile image
     ) {
 
         // Validation
-        // TODO
-
         // MultipartFile이 모두 image인지 확인
         ResponseDTO result = new ResponseDTO();
         List<String> errors = new ArrayList<>();

@@ -20,8 +20,9 @@ public class GuideController {
             @RequestParam(value = "page", required = false) Integer page
     ) {
         // Validate
-        if(page <= 0)
+        if (page == null || page <= 0) {
             page = 1;
+        }
 
         CardNewsListDTO result = guideService.findCardNewsByFilter(term, cardNewsClass,page);
         return result;
