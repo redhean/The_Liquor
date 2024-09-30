@@ -12,18 +12,18 @@ import lombok.NoArgsConstructor;
 public class BrandRequestDTO {
 
     @JsonProperty("name")
-    @NotBlank(message = "{}")
+    @NotBlank(message = "{BrandRequestDTO.name.blank}")
     private String name;
 
     @JsonProperty("producer")
-    @NotNull(message = "{}")
+    @NotNull(message = "{BrandRequestDTO.producerId.null}")
     private Integer producerId;
 
     @JsonProperty("classification")
-    @NotNull(message = "{}")
+    @NotNull(message = "{BrandRequestDTO.classificationId.null}")
     private Integer classificationId;
 
     @JsonProperty("color")
-    @NotBlank(message = "{}")
+    @NotBlank(message = "{BrandRequestDTO.color.blank}")
     private String color;
 }
